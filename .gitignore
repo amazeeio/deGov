@@ -19,3 +19,4 @@ vendor/
 .DS_Store
 settings.php
 settings.local.php
+!/docroot/sites/default/amazeeio/settings.php
