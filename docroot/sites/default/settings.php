@@ -763,6 +763,11 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
-if (file_exists(__DIR__ . '/settings.platformsh.php')) {
+
+if (isset($_ENV['PLATFORM_RELATIONSHIPS']) && file_exists(__DIR__ . '/settings.platformsh.php')) {
   include __DIR__ . '/settings.platformsh.php';
+}
+
+if (getenv('AMAZEEIO_SITENAME') && file_exists(__DIR__ . '/amazeeio/settings.php')) {
+  include __DIR__ . '/amazeeio/settings.php';
 }

@@ -1,0 +1,18 @@
+sitegroup: degov
+
+deploy_tasks:
+  development:
+    after_deploy:
+      - composer install
+      - cd docroot && drush site-install degov_profile --yes --account-pass=admin
+      - cd docroot && drush -y cr
+  production:
+    after_deploy:
+      - composer install
+      - cd docroot && drush site-install degov_profile --yes --account-pass=admin
+      - cd docroot && drush -y cr
+
+shared:
+  production:
+    - src: files
+      dst: docroot/sites/default/files
